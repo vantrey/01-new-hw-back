@@ -12,8 +12,8 @@ import { checkParam } from '../param-validatiors/param-validation';
  */
 export const updateVideoValidation = [
 	checkParam,
-	titleStringValidation.optional({ nullable: true }),
-	authorStringValidation.optional({ nullable: true }),
+	titleStringValidation,
+	authorStringValidation,
 	resolutionValidations.optional(),
 	...canBeDownloadValidators,
 	...minAgeRestrictionValidators,

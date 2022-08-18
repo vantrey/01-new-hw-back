@@ -5,7 +5,7 @@ export interface VideoInterface {
 	title: string;
 	author: string;
 	canBeDownloaded: boolean;
-	minAgeRestriction: number;
+	minAgeRestriction: number | null;
 	/**
 	 * ISO String
 	 */

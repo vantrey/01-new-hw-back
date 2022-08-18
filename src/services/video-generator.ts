@@ -6,7 +6,7 @@ export const videoGenerator = ({
 	author,
 	availableResolutions = [],
 }: CreateVideoType): VideoInterface => {
-	const date = new Date().toISOString();
+	const date = new Date().toDateString()
 	const publicationDate = getDefaultPublicationDate(date);
 	const id = +new Date();
 	return {
@@ -17,7 +17,7 @@ export const videoGenerator = ({
 		createdAt: date,
 		publicationDate,
 		canBeDownloaded: false,
-		minAgeRestriction: 18,
+		minAgeRestriction: null,
 	};
 };
 

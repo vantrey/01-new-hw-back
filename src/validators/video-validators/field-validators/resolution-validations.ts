@@ -8,12 +8,17 @@ export const resolutionValidations = body('availableResolutions').custom(
 		}
 
 		const resolutionEnumArray = Object.values(ResolutionEnum);
-		const isSomeOfValuesNotInEnum = value.some(
+		/*const isSomeOfValuesNotInEnum = value.some(
 			(resolution) => !(resolution in ResolutionEnum),
-		);
-		if (isSomeOfValuesNotInEnum) {
-			throw new Error(`Possible resolutions: ${resolutionEnumArray}`);
+		);*/
+		//const regExp = new RegExp(/^P144$|^P240$|^P720$|^P1440$/)
+		const regExp = new RegExp(
+			`^${ResolutionEnum.P144}$|^${ResolutionEnum.P240}$|^${ResolutionEnum.P720}$|^${ResolutionEnum.P1440}$|^${ResolutionEnum.P2160}$`
+		)
+		const isEveryValuesInEnum = value.every((resolution) => regExp.test(resolution))
+		if (isEveryValuesInEnum) {
+			return true;
 		}
-		return true;
+		throw new Error(`Possible resolutions: ${resolutionEnumArray}`);
 	},
 );
