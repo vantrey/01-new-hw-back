@@ -2,7 +2,7 @@ import { body } from 'express-validator';
 import { ResolutionEnum } from '../../../enums';
 
 export const resolutionValidations = body('availableResolutions').custom(
-	(value: string[]) => {
+	(value: ResolutionEnum[]) => {
 		if (!Array.isArray(value)) {
 			throw new Error('availableResolutions must be an array!');
 		}
@@ -15,7 +15,7 @@ export const resolutionValidations = body('availableResolutions').custom(
 		const regExp = new RegExp(
 			`^${ResolutionEnum.P144}$|^${ResolutionEnum.P240}$|^${ResolutionEnum.P720}$|^${ResolutionEnum.P1440}$|^${ResolutionEnum.P2160}$`
 		)
-		const isEveryValuesInEnum = value.every((resolution) => regExp.test(resolution))
+		const isEveryValuesInEnum = value.every((resolution) => resolutionEnumArray.includes(resolution))
 		if (isEveryValuesInEnum) {
 			return true;
 		}
