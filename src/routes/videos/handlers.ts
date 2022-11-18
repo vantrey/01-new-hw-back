@@ -77,6 +77,7 @@ export const removeVideoById = (request: Request, response: Response) => {
  * @param response
  */
 export const dropDatabase = (request: Request, response: Response) => {
+	console.log('drop')
 	videosRepository.dropDatabase();
 	return response.status(HttpStatusesEnum.NO_CONTENT).send();
 };
